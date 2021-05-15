@@ -1,0 +1,13 @@
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\bin\Debug\MedicacionAlergias.exe.config
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\bin\Debug\MedicacionAlergias.exe
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\bin\Debug\MedicacionAlergias.pdb
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\obj\Debug\MedicacionAlergias.csprojAssemblyReference.cache
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\obj\Debug\MedicacionAlergias.Form1.resources
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\obj\Debug\MedicacionAlergias.Properties.Resources.resources
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\obj\Debug\MedicacionAlergias.csproj.GenerateResource.cache
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\obj\Debug\MedicacionAlergias.csproj.CoreCompileInputs.cache
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\obj\Debug\MedicacionAlergias.exe
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\obj\Debug\MedicacionAlergias.pdb
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\bin\Debug\System.Data.OleDb.dll
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\bin\Debug\System.Data.OleDb.xml
+C:\Users\sergi\Desktop\Alergias\MedicacionAlergias\obj\Debug\MedicacionAlergias.csproj.CopyComplete

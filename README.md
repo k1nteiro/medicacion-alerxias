@@ -1,5 +1,10 @@
 # Medicación Alerxias
 
+## * English
+This program is developed with the aim of keeping track of the doses of certain medication taken by the user, with data such as the date of taking, the number of doses, an observation of why it was taken, and the name of the itself.
+
+It integrates a database under Microsoft Access, located in the project's resources folder. For now, the functionality of adding medication has to be done by hand on the BD. It will be integrated into the project in future versions.
+
 ## * Galego
 Este programa está desenvolvido con obxecto de levar un seguimento das doses de certa medicación tomada polo usuario, con datos tales como a data da toma, o numero de doses, unha observación de por que foi tomada, e o nome da mesma.
 
@@ -12,4 +17,7 @@ Integra una base de datos bajo Microsoft Access, localizada en la carpeta de rec
 
 
 ---
-K5 Prog
+K5 Prog©
+---
+
+Developed entirely by Sergio Quinteiro Varela. Educational, non-commercial project. Its distribution is prohibited. All rights reserved to the developer.

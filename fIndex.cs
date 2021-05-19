@@ -77,11 +77,13 @@ namespace MedicacionAlerxias
                 // O DataSet so devolve o nome, casteamolo e gardámolo nunha variable.
 
                 // O resto dos datos son directamente da taboa DiarioDoses.
-                dgvDiario.Rows.Add( nomeMedicacion,
+                dgvDiario.Rows.Add( dsDiarioDoses.Tables[0].Rows[i][clsDiarioDoses.INDEX_ID],
+                                    dsDiarioDoses.Tables[0].Rows[i][clsDiarioDoses.INDEX_ID_MEDICACION],
+                                    nomeMedicacion,
                                     dsDiarioDoses.Tables[0].Rows[i][clsDiarioDoses.INDEX_VECES_DIA],
                                     dsDiarioDoses.Tables[0].Rows[i][clsDiarioDoses.INDEX_OBSERVACIONS],
                                     dsDiarioDoses.Tables[0].Rows[i][clsDiarioDoses.INDEX_DATA_HORA]);
-                // Engadimos todas as filas ao DataGridView.
+                // Engadimos todas as filas ao DataGridView. Recordemos que o Id e o IdMedicación non están visibles..
             }
             dgvDiario.CurrentCell = null;
         }
@@ -158,7 +160,7 @@ namespace MedicacionAlerxias
             }catch (Exception ex) // Se ocorreu algún erro...
             {
                 // Rexistramos o erro por consola e mostrámoslle unha mensaxe ao usuario.
-                Console.Write("--- Excepción na clase 'fIndex.cs'. MENSAXE: " + ex.Message);
+                Console.Write("--- Excepción en clase '" + this.Name + "'. MENSAXE: " + ex.Message);
                 MessageBox.Show("Houbo un erro inesperado mentes se intentaba borrar o rexistro da Base de Datos. Inténteo de novo, e póñase en contacto co servizo " +
                                 "de mantemento se o erro persiste", "ERRO borrando rexistro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -179,17 +181,18 @@ namespace MedicacionAlerxias
                 // ... eliminamos a toma seleccionada, previa comprobación.
                 eliminarToma();
             }
-            bts_CRUD_Enabler();
+            bts_CRUD_Enabler(); // Comprobamos a dispoñibilidade dos botóns.
         }
 
-        private void btEditarMedicacion_Click(object sender, EventArgs e)
+        private void btEditarMedicacion_Click(object sender, EventArgs e) // Para abrir o formulario fEditarMedicacion.cs
         {
-            fEditarMedicacion fEditarMedicacion = new fEditarMedicacion(oBD, oMedicacion, oDiario);
-            this.Hide();
-            fEditarMedicacion.ShowDialog();
-            this.Show();
-            listarMedicacion();
-            mostrarTodoTomas();
+            fEditarMedicacion fEditarMedicacion = new fEditarMedicacion(oBD, oMedicacion, oDiario); // Instanciamos o formulario.
+            this.Hide(); // Ocultamos o formulario actual.
+            fEditarMedicacion.ShowDialog(); // Mostramos o novo formulario en forma de diálogo.
+            this.Show(); // Unha vez cerrado o novo, mostramos o anterior formulario.
+
+            listarMedicacion(); // Recargamos o ComboBox coa nova medicación (se fose o caso).
+            mostrarTodoTomas(); // Facemos o mesmo para as tomas.
         }
 
         private void cbxMedicacion_SelectedIndexChanged(object sender, EventArgs e) // Evento controlado para mostrar un resume sobre a medicación escollida no ComboBox.
@@ -216,6 +219,23 @@ namespace MedicacionAlerxias
             bts_CRUD_Enabler(); // Verificamos se se cumpren os requisitos para habilitar o boton btGardar.
         }
 
-        
+        private void dgvDiario_Sorted(object sender, EventArgs e) // Para controlar que o dsDiarioDoses se ordene acorde á ordenación do DataGridView.
+        {
+            dsDiarioDoses.Clear(); // Limpamos o DataSet
+            for (int i = 0; i < dgvDiario.Rows.Count; i++) // Percorremos as filas do DataGridView
+            {
+                oDiario.Id = Convert.ToInt32(dgvDiario.Rows[i].Cells[0].Value); // Introducimos os valore do DGV nas propiedades da clase clsDiarioDoses, a excepción no nome da medicación.
+                oDiario.IdMedicacion = Convert.ToInt32(dgvDiario.Rows[i].Cells[1].Value);
+                // A posición 2 é o nome da medicación, por tanto non a collemos.
+                oDiario.VecesDia = Convert.ToInt32(dgvDiario.Rows[i].Cells[3].Value);
+                oDiario.Observacions = Convert.ToString(dgvDiario.Rows[i].Cells[4].Value);
+                oDiario.DataHora = Convert.ToDateTime(dgvDiario.Rows[i].Cells[5].Value);
+
+                // Enchemos o DS con estos valores.
+                dsDiarioDoses.Tables[0].Rows.Add(oDiario.Id, oDiario.IdMedicacion, oDiario.VecesDia, oDiario.Observacions, oDiario.DataHora);
+            }
+
+            // Chegados a este punto, o dsDiario está ordenado tal e como o está o dgvDiario.
+        }
     }
 }

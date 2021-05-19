@@ -105,7 +105,7 @@ namespace MedicacionAlerxias
             catch (Exception ex)
             {
                 // Se algo falla, mostramos o erro por consola e imprimimos unha mensaxe de erro.
-                Console.Write("--- Excepción na clase 'clsDiarioDoses'. MENSAXE: " + ex.Message);
+                Console.Write("--- Excepción en clase '" + this.Name + "'. MENSAXE: " + ex.Message);
                 MessageBox.Show("Houbo un erro inesperado mentres se intentaba actualizar a toma. Inténteo de novo, e póñase en contacto co servizo de mantemento se o erro persiste.",
                                 "ACTUALIZACIÓN DE TOMA. ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

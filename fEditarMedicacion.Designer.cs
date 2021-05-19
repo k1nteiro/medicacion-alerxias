@@ -29,16 +29,12 @@ namespace MedicacionAlerxias
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fEditarMedicacion));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvMedicacion = new System.Windows.Forms.DataGridView();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Laboratorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tratamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InfoResumida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblFondoHeader = new System.Windows.Forms.Label();
@@ -61,6 +57,11 @@ namespace MedicacionAlerxias
             this.btGardar = new System.Windows.Forms.Button();
             this.btAtras = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Laboratorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tratamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InfoResumida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.pnlCRUD.SuspendLayout();
@@ -75,79 +76,35 @@ namespace MedicacionAlerxias
             this.dgvMedicacion.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvMedicacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMedicacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.Nome,
             this.Laboratorio,
             this.Tratamento,
             this.InfoResumida});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ScrollBar;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMedicacion.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMedicacion.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMedicacion.GridColor = System.Drawing.SystemColors.Control;
             this.dgvMedicacion.Location = new System.Drawing.Point(317, 164);
             this.dgvMedicacion.MultiSelect = false;
             this.dgvMedicacion.Name = "dgvMedicacion";
             this.dgvMedicacion.RowHeadersVisible = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvMedicacion.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvMedicacion.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvMedicacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedicacion.Size = new System.Drawing.Size(460, 280);
             this.dgvMedicacion.TabIndex = 0;
             this.dgvMedicacion.TabStop = false;
-            this.dgvMedicacion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResumen_CellClick);
-            // 
-            // Nome
-            // 
-            this.Nome.DataPropertyName = "Nome";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Nome.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Nome.ToolTipText = "columna Medicación";
-            this.Nome.Width = 125;
-            // 
-            // Laboratorio
-            // 
-            this.Laboratorio.DataPropertyName = "Laboratorio";
-            this.Laboratorio.HeaderText = "Laboratorio";
-            this.Laboratorio.Name = "Laboratorio";
-            this.Laboratorio.ReadOnly = true;
-            this.Laboratorio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Laboratorio.ToolTipText = "columna Laboratorio";
-            this.Laboratorio.Width = 75;
-            // 
-            // Tratamento
-            // 
-            this.Tratamento.DataPropertyName = "Tratamento";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Tratamento.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Tratamento.HeaderText = "Tratamento";
-            this.Tratamento.Name = "Tratamento";
-            this.Tratamento.ReadOnly = true;
-            this.Tratamento.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Tratamento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Tratamento.ToolTipText = "columna Tratamento";
-            this.Tratamento.Width = 150;
-            // 
-            // InfoResumida
-            // 
-            this.InfoResumida.DataPropertyName = "InfoResumida";
-            this.InfoResumida.HeaderText = "Resumen";
-            this.InfoResumida.Name = "InfoResumida";
-            this.InfoResumida.ReadOnly = true;
-            this.InfoResumida.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.InfoResumida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.InfoResumida.ToolTipText = "columna Resumen";
-            this.InfoResumida.Width = 90;
+            this.dgvMedicacion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMedicacion_CellClick);
+            this.dgvMedicacion.Sorted += new System.EventHandler(this.dgvMedicacion_Sorted);
             // 
             // pbLogo
             // 
@@ -391,6 +348,59 @@ namespace MedicacionAlerxias
             this.label5.TabIndex = 13;
             this.label5.Text = "Inserir Medicación:";
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Nome.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nome.ToolTipText = "columna Medicación";
+            this.Nome.Width = 125;
+            // 
+            // Laboratorio
+            // 
+            this.Laboratorio.DataPropertyName = "Laboratorio";
+            this.Laboratorio.HeaderText = "Laboratorio";
+            this.Laboratorio.Name = "Laboratorio";
+            this.Laboratorio.ReadOnly = true;
+            this.Laboratorio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Laboratorio.ToolTipText = "columna Laboratorio";
+            this.Laboratorio.Width = 75;
+            // 
+            // Tratamento
+            // 
+            this.Tratamento.DataPropertyName = "Tratamento";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Tratamento.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Tratamento.HeaderText = "Tratamento";
+            this.Tratamento.Name = "Tratamento";
+            this.Tratamento.ReadOnly = true;
+            this.Tratamento.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Tratamento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Tratamento.ToolTipText = "columna Tratamento";
+            this.Tratamento.Width = 150;
+            // 
+            // InfoResumida
+            // 
+            this.InfoResumida.DataPropertyName = "InfoResumida";
+            this.InfoResumida.HeaderText = "Resumen";
+            this.InfoResumida.Name = "InfoResumida";
+            this.InfoResumida.ReadOnly = true;
+            this.InfoResumida.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.InfoResumida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.InfoResumida.ToolTipText = "columna Resumen";
+            this.InfoResumida.Width = 90;
+            // 
             // fEditarMedicacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,10 +456,11 @@ namespace MedicacionAlerxias
         private System.Windows.Forms.TextBox txbTratamento;
         private System.Windows.Forms.TextBox txbInfoResumida;
         private System.Windows.Forms.Label lblInfoResumida;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Laboratorio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tratamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn InfoResumida;
-        private System.Windows.Forms.Label label5;
     }
 }

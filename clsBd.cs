@@ -6,6 +6,14 @@ namespace MedicacionAlerxias
 {
     public class clsBd
     {
+        /*
+         * 
+         * Clase modificada por Sergio Quinteiro Varela (K5 Prog ©).
+         * Autor Orixinario: José M. Fernández Dorado, profesor de Deseño de Interfaces no IES Muralla Romana, curso 2020-2021.
+         * Dereitos Reservados a José M. Fernández Dorado, como agradecemento do seu aporte.
+         * 
+         */
+
         OleDbConnection conexion;
         public clsBd(string nomeBD)
         {

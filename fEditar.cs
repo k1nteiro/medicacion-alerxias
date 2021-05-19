@@ -14,15 +14,17 @@ namespace MedicacionAlerxias
     {
 
         private clsBd oBD; // Porque imos necesitar facer operacións sobre a BD.
+        private clsMedicacion oMedicacion; // Para ter os datos da medicación, como o Nome.
         private DataSet dsMedicacion; // Para ter os datos da medicación no ComboBox.
         private DataSet dsDiarioDoses; // Para ter os datos das tomas.
         private clsDiarioDoses oDiario; // Para poder manexar as propiedades e realizar operacións de acceso á BD.
         private int tomaIndex; // Para ter o índice da fila seleccionada do DataGridView, mesmo que no dsDiarioDoses.
 
-        public fEditar(clsBd oBD, DataSet dsMedicacion, DataSet dsDiarioDoses, clsDiarioDoses oDiario, int index) // Recibimos os parámetros recollemos o seu valor nos propios da clase.
+        public fEditar(clsBd oBD, clsMedicacion oMedicacion, DataSet dsMedicacion, DataSet dsDiarioDoses, clsDiarioDoses oDiario, int index) // Recibimos os parámetros recollemos o seu valor nos propios da clase.
         {
             InitializeComponent();
             this.oBD = oBD;
+            this.oMedicacion = oMedicacion;
             this.dsMedicacion = dsMedicacion;
             this.dsDiarioDoses = dsDiarioDoses;
             this.oDiario = oDiario;
@@ -40,7 +42,11 @@ namespace MedicacionAlerxias
 
             // Asignamos valor aos compoñentes, e gardamos os mesmos valores nas propiedades da clase clsDiarioDoses, para próximo uso.
             oDiario.DataHora = dtpData.Value = Convert.ToDateTime(dsDiarioDoses.Tables[0].Rows[tomaIndex][clsDiarioDoses.INDEX_DATA_HORA]);
-            oDiario.IdMedicacion = cbxMedicacion.SelectedIndex = Convert.ToInt32(dsDiarioDoses.Tables[0].Rows[tomaIndex][clsDiarioDoses.INDEX_ID_MEDICACION]) - 1;
+
+            oMedicacion.Id = oDiario.IdMedicacion = Convert.ToInt32(dsDiarioDoses.Tables[0].Rows[tomaIndex][clsDiarioDoses.INDEX_ID_MEDICACION]);
+
+            cbxMedicacion.SelectedItem = Convert.ToString((oMedicacion.obterNomeMedicacionPorId(oBD)).Tables[0].Rows[0][0]);
+
             oDiario.VecesDia = Convert.ToInt32(nudDoses.Value = Convert.ToInt32(dsDiarioDoses.Tables[0].Rows[tomaIndex][clsDiarioDoses.INDEX_VECES_DIA]));
             oDiario.Observacions = txbObservacions.Text = Convert.ToString(dsDiarioDoses.Tables[0].Rows[tomaIndex][clsDiarioDoses.INDEX_OBSERVACIONS]);
         }
@@ -73,7 +79,7 @@ namespace MedicacionAlerxias
             {
                 actualizarBD(); // ... actualizamos a BD.
             }
-            else if (((Button)sender).Name.Contains("Cancelar")) // Se o botón é btCancelar...
+            else if (((Button)sender).Name.Contains("Cancelar") || ((Button)sender).Name.Contains("Atras")) // Se o botón é btCancelar ou btAtras...
             {
                 this.Close(); // ... cerramos o formulario.
             }

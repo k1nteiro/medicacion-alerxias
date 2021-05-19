@@ -25,17 +25,15 @@ namespace MedicacionAlerxias
         private DataSet dsMedicacion; // Para recoller os datos da medicación.
         private DataSet dsDiarioDoses; // Para recoller os datos do diario.
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void fIndex_Load(object sender, EventArgs e)
         {
             oBD.abrirBd(); // Abrimos a BD.
-            btGardar.Enabled = false; // Inhabilitamos o botón btGardar.
 
-            dsMedicacion = oMedicacion.obterTodaMedicacion(oBD); // Lemos a medicación da que dispomos na BD, e gardámos a información nun DataSet.
-            clsFuncionsComuns.encherCbxMedicacion(ref cbxMedicacion, ref dsMedicacion); // Enchemos o ComboBox pasando as referencias do combo e do DataSet.
+            listarMedicacion(); // Listamos a medicación obtida da BD.
 
             mostrarTodoTomas(); // Mostramos os datos no DataGridView.
 
-            bts_CRUD_Enabler();
+            bts_CRUD_Enabler(); // Habilitamos/inhabilitamos os botóns.
         }
 
         public void asignarPropiedadesDiario() // Asignamos os valores axeitados a estas propiedades na clase DiarioDoses, para próximo uso dos mesmos.
@@ -68,26 +66,30 @@ namespace MedicacionAlerxias
 
         private void mostrarTodoTomas() // Mostramos o historial de tomas da BD.
         {
+            dgvDiario.Rows.Clear(); // Limpamos o DataGridView.
             dsDiarioDoses = oDiario.lerTodoTomas(oBD); // Lemos as tomas rexistradas na BD.
-            dgvResumen.Rows.Clear(); // Limpamos o DataGridView.
             for (int i = 0; i < dsDiarioDoses.Tables[0].Rows.Count; i++) // Percorremos as tomas.
             {
-                int indexMedicacion = Convert.ToInt32(dsDiarioDoses.Tables[0].Rows[i][clsDiarioDoses.INDEX_ID_MEDICACION]) - 1;
-                // Gardamos o index da Medicación nunha variable, para empregalo á hora de mostrar o nome da mesma.
+                int idMedicacion = Convert.ToInt32(dsDiarioDoses.Tables[0].Rows[i][clsDiarioDoses.INDEX_ID_MEDICACION]);
+                // Gardamos o id da Medicación nunha variable, para empregalo á hora de mostrar o nome da mesma.
+                oMedicacion.Id = idMedicacion;
+                string nomeMedicacion = Convert.ToString((oMedicacion.obterNomeMedicacionPorId(oBD)).Tables[0].Rows[0][0]);
+                // O DataSet so devolve o nome, casteamolo e gardámolo nunha variable.
+
                 // O resto dos datos son directamente da taboa DiarioDoses.
-                dgvResumen.Rows.Add(dsMedicacion.Tables[0].Rows[indexMedicacion][clsMedicacion.INDEX_NOME],
+                dgvDiario.Rows.Add( nomeMedicacion,
                                     dsDiarioDoses.Tables[0].Rows[i][clsDiarioDoses.INDEX_VECES_DIA],
                                     dsDiarioDoses.Tables[0].Rows[i][clsDiarioDoses.INDEX_OBSERVACIONS],
                                     dsDiarioDoses.Tables[0].Rows[i][clsDiarioDoses.INDEX_DATA_HORA]);
                 // Engadimos todas as filas ao DataGridView.
             }
-            dgvResumen.CurrentCell = null;
+            dgvDiario.CurrentCell = null;
         }
 
         private void bts_CRUD_Enabler() // Habilita o botón se se cumpren as condicións.
         {
             btGardar.Enabled = (dtpData.Value != null && cbxMedicacion.SelectedIndex != -1 && nudDoses.Value != 0);
-            btEditar.Enabled = btEliminar.Enabled = dgvResumen.CurrentRow != null;
+            btEditar.Enabled = btEliminar.Enabled = dgvDiario.CurrentRow != null;
             // Desta forma, sabemos que se están a introducir datos válidos, xa que de non ser así o botón estaría inhabilitado.
         }
 
@@ -97,14 +99,14 @@ namespace MedicacionAlerxias
             cbxMedicacion.SelectedIndex = 0;
             nudDoses.Value = 0;
             txbObservacions.Clear();
-            dgvResumen.CurrentCell = null;
+            dgvDiario.CurrentCell = null;
         }
 
         private void abrirFormEditar() // Comproba se é posible abrir o formulario fEditar.
         {
-            if (dgvResumen.CurrentRow != null) // Se hai unha fila seleccionada...
+            if (dgvDiario.CurrentRow != null) // Se hai unha fila seleccionada...
             {
-                fEditar fEditar = new fEditar(oBD, dsMedicacion, dsDiarioDoses, oDiario, dgvResumen.CurrentRow.Index); // ... instanciamos o formulario fEditar.
+                fEditar fEditar = new fEditar(oBD, oMedicacion, dsMedicacion, dsDiarioDoses, oDiario, dgvDiario.CurrentRow.Index); // ... instanciamos o formulario fEditar.
                 this.Hide(); // Ocultamos o formulario inicial.
                 fEditar.ShowDialog(); // Mostramos o formulario para editar.
 
@@ -118,18 +120,24 @@ namespace MedicacionAlerxias
             }
         }
 
+        private void listarMedicacion()
+        {
+            dsMedicacion = oMedicacion.obterTodaMedicacion(oBD); // Lemos a medicación da que dispomos na BD, e gardámos a información nun DataSet.
+            clsFuncionsComuns.encherCbxMedicacion(ref cbxMedicacion, ref dsMedicacion); // Enchemos o ComboBox pasando as referencias do combo e do DataSet.
+        }
+
         private void eliminarToma() // Para eliminar a toma.
         {
             try
             {
-                if (dgvResumen.CurrentRow != null) // Se hai unha fila seleccionada...
+                if (dgvDiario.CurrentRow != null) // Se hai unha fila seleccionada...
                 {
                     // Pedimos confirmación para asegurarnos de que o usuario quere eliminar un rexistro.
                     DialogResult result = MessageBox.Show("Está seguro de que deseña eliminar a toma seleccionada?", "Eliminación de Rexistro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes) // Se confirma...
                     {
                         // ... Gardamos o Id na clase clsDiarioDoses e procedemos coa eliminación.
-                        oDiario.Id = Convert.ToInt32(dsDiarioDoses.Tables[0].Rows[dgvResumen.CurrentRow.Index][clsDiarioDoses.INDEX_ID]);
+                        oDiario.Id = Convert.ToInt32(dsDiarioDoses.Tables[0].Rows[dgvDiario.CurrentRow.Index][clsDiarioDoses.INDEX_ID]);
                         oDiario.eliminarToma(oBD);
                         // Se todo foi correcto, actualizamos os cambios sobre a BD no DataGridView, e mostramos unha mensaxe de satisfacción.
                         mostrarTodoTomas();
@@ -174,6 +182,16 @@ namespace MedicacionAlerxias
             bts_CRUD_Enabler();
         }
 
+        private void btEditarMedicacion_Click(object sender, EventArgs e)
+        {
+            fEditarMedicacion fEditarMedicacion = new fEditarMedicacion(oBD, oMedicacion, oDiario);
+            this.Hide();
+            fEditarMedicacion.ShowDialog();
+            this.Show();
+            listarMedicacion();
+            mostrarTodoTomas();
+        }
+
         private void cbxMedicacion_SelectedIndexChanged(object sender, EventArgs e) // Evento controlado para mostrar un resume sobre a medicación escollida no ComboBox.
         {
             lbxInfoResumida.Items.Clear(); // Limpamos o ListBox para 'substituir' o texto a mostrar polo antigo.
@@ -197,5 +215,7 @@ namespace MedicacionAlerxias
         {
             bts_CRUD_Enabler(); // Verificamos se se cumpren os requisitos para habilitar o boton btGardar.
         }
+
+        
     }
 }

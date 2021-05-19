@@ -61,6 +61,12 @@
     <Compile Include="fEditar.Designer.cs">
       <DependentUpon>fEditar.cs</DependentUpon>
     </Compile>
+    <Compile Include="fEditarMedicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fEditarMedicacion.Designer.cs">
+      <DependentUpon>fEditarMedicacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="fIndex.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fEditar.resx">
       <DependentUpon>fEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fEditarMedicacion.resx">
+      <DependentUpon>fEditarMedicacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fIndex.resx">
       <DependentUpon>fIndex.cs</DependentUpon>

@@ -43,6 +43,7 @@ namespace MedicacionAlerxias
             this.dtpData = new System.Windows.Forms.DateTimePicker();
             this.btCancelar = new System.Windows.Forms.Button();
             this.btGardar = new System.Windows.Forms.Button();
+            this.btAtras = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDoses)).BeginInit();
             this.SuspendLayout();
@@ -173,12 +174,27 @@ namespace MedicacionAlerxias
             this.btGardar.UseVisualStyleBackColor = true;
             this.btGardar.Click += new System.EventHandler(this.bts_Gardar_Cancelar_Click);
             // 
+            // btAtras
+            // 
+            this.btAtras.BackColor = System.Drawing.SystemColors.Control;
+            this.btAtras.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btAtras.BackgroundImage")));
+            this.btAtras.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btAtras.FlatAppearance.BorderSize = 0;
+            this.btAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAtras.Location = new System.Drawing.Point(12, 100);
+            this.btAtras.Name = "btAtras";
+            this.btAtras.Size = new System.Drawing.Size(40, 35);
+            this.btAtras.TabIndex = 24;
+            this.btAtras.UseVisualStyleBackColor = false;
+            this.btAtras.Click += new System.EventHandler(this.bts_Gardar_Cancelar_Click);
+            // 
             // fEditar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(399, 431);
+            this.Controls.Add(this.btAtras);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btGardar);
             this.Controls.Add(this.lblObservacions);
@@ -218,5 +234,6 @@ namespace MedicacionAlerxias
         private System.Windows.Forms.DateTimePicker dtpData;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.Button btGardar;
+        private System.Windows.Forms.Button btAtras;
     }
 }

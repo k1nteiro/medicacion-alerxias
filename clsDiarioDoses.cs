@@ -33,27 +33,18 @@ namespace MedicacionAlerxias
         public const int INDEX_OBSERVACIONS = 3;
         public const int INDEX_DATA_HORA = 4;
 
-        public DataSet obterTodoDiario(clsBd oBD)
-        {
-            // Id, IdMedicacion, Observacions, DataHora
-            string sql = "SELECT * FROM DiarioDoses;";
 
+        public DataSet lerTodoTomas(clsBd oBD)
+        {
+            string sql = string.Format("SELECT * FROM DiarioDoses");
             return oBD.operacionsSelect(sql);
         }
-
 
         public void inserirToma(clsBd oBD)
         {
             string sql = string.Format("INSERT INTO DiarioDoses (IdMedicacion, VecesDia, Observacions, DataHora) VALUES ({0},{1},'{2}',Mid('{3}',1,10));",
                                         this._idMedicacion, this._vecesDia, this._observacions, this._dataHora);
             oBD.operacionsNonSelect(sql);
-        }
-
-
-        public DataSet lerTodoTomas(clsBd oBD)
-        {
-            string sql = string.Format("SELECT * FROM DiarioDoses");
-            return oBD.operacionsSelect(sql);
         }
 
         public void actualizarToma(clsBd oBD)
@@ -69,6 +60,12 @@ namespace MedicacionAlerxias
         public void eliminarToma(clsBd oBD)
         {
             string sql = string.Format("DELETE FROM DiarioDoses WHERE Id = {0}", this._id);
+            oBD.operacionsNonSelect(sql);
+        }
+
+        public void eliminarTomasPorIdMedicacion(clsBd oBD)
+        {
+            string sql = string.Format("DELETE FROM DiarioDoses WHERE IdMedicacion = {0}", this._idMedicacion);
             oBD.operacionsNonSelect(sql);
         }
 

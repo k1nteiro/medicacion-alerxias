@@ -17,10 +17,14 @@ namespace MedicacionAlerxias
 
         public static void encherCbxMedicacion(ref ComboBox cbxMedicacion, ref DataSet dsMedicacion) // ENCHE OS ComboBox DOS NOMES DA MEDICACIÓN (ver referencias ás chamadas).
         {
+            cbxMedicacion.Items.Clear();
             for (int i = 0; i < dsMedicacion.Tables[0].Rows.Count; i++)
             {
                 cbxMedicacion.Items.Add(dsMedicacion.Tables[0].Rows[i][clsMedicacion.INDEX_NOME]); // Percorremos o DataSet e engadimos o nome de cada medicación ao ComboBox.
             }
         }
+
+        
+
     }
 }

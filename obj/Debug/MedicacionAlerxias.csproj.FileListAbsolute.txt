@@ -39,3 +39,4 @@ C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\obj\Debug\Medicacion
 C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\obj\Debug\MedicacionAlerxias.csproj.CopyComplete
 C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\obj\Debug\Medicacion_Alerxias.exe
 C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\obj\Debug\Medicacion_Alerxias.pdb
+C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\obj\Debug\MedicacionAlerxias.fEditarMedicacion.resources

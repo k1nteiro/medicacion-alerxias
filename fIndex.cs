@@ -19,7 +19,7 @@ namespace MedicacionAlerxias
             InitializeComponent();
         }
 
-        private clsBd oBD = new clsBd("..\\..\\res\\BD\\medicacion.mdb"); // Instanciamos a clsBD e pasámoslle a ruta relativa á BD.
+        private clsBd oBD = new clsBd(".\\BD\\medicacion.mdb"); // Instanciamos a clsBD e pasámoslle a ruta relativa á BD.
 
         private clsMedicacion oMedicacion = new clsMedicacion(); // Para manexar os datos da medicación.
         private clsDiarioDoses oDiario = new clsDiarioDoses(); // Para manexar os datos do diario.
@@ -260,7 +260,7 @@ namespace MedicacionAlerxias
             sl.SetCellValue(fila, 4, "Data");
 
             // Ordenamos o DGV por data de toma
-            dgvDiario.Sort(dgvDiario.Columns[4], ListSortDirection.Ascending);
+            dgvDiario.Sort(dgvDiario.Columns[5], ListSortDirection.Ascending);
 
             // Percorremos o DGV xa ordenado e gardamos as 4 principais columnas para cada fila.
             foreach (DataGridViewRow row in dgvDiario.Rows)
@@ -274,7 +274,7 @@ namespace MedicacionAlerxias
 
             
 
-            sl.SaveAs("..\\..\\res\\Descargas\\medicacion_imprimir.xlsx"); // exportamos o documento ás Descargas, dentro dos arquivos do programa.
+            sl.SaveAs(".\\Descargas\\medicacion_imprimir.xlsx"); // exportamos o documento ás Descargas, dentro dos arquivos do programa.
 
             MessageBox.Show("O arquivo foi exportado á ruta 'MedicaciónAlerxias/Descargas/medicación_imprimir.xlsx'.", "Descarga Completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

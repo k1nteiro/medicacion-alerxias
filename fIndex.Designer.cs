@@ -65,6 +65,7 @@ namespace MedicacionAlerxias
             this.Doses = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observacions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btImprimir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudDoses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiario)).BeginInit();
@@ -399,6 +400,16 @@ namespace MedicacionAlerxias
             this.Data.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Data.ToolTipText = "columna Data";
             // 
+            // btImprimir
+            // 
+            this.btImprimir.Location = new System.Drawing.Point(695, 132);
+            this.btImprimir.Name = "btImprimir";
+            this.btImprimir.Size = new System.Drawing.Size(75, 23);
+            this.btImprimir.TabIndex = 10;
+            this.btImprimir.Text = "Imprimir";
+            this.btImprimir.UseVisualStyleBackColor = true;
+            this.btImprimir.Click += new System.EventHandler(this.btImprimir_Click);
+            // 
             // fIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,6 +417,7 @@ namespace MedicacionAlerxias
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(799, 511);
+            this.Controls.Add(this.btImprimir);
             this.Controls.Add(this.lblK5Prog);
             this.Controls.Add(this.lblCopyRight);
             this.Controls.Add(this.lblK1nteiro);
@@ -475,6 +487,7 @@ namespace MedicacionAlerxias
         private System.Windows.Forms.DataGridViewTextBoxColumn Doses;
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacions;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.Button btImprimir;
     }
 }
 

@@ -40,3 +40,10 @@ C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\obj\Debug\Medicacion
 C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\obj\Debug\Medicacion_Alerxias.exe
 C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\obj\Debug\Medicacion_Alerxias.pdb
 C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\obj\Debug\MedicacionAlerxias.fEditarMedicacion.resources
+C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\bin\Debug\DocumentFormat.OpenXml.dll
+C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\bin\Debug\SpreadsheetLight.dll
+C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\bin\Debug\System.Drawing.Common.dll
+C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\bin\Debug\System.IO.Packaging.dll
+C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\bin\Debug\DocumentFormat.OpenXml.xml
+C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\bin\Debug\SpreadsheetLight.xml
+C:\VS_WORSPACE\MedicacionAlerxias\MedicacionAlerxias_v1.0.0\bin\Debug\System.IO.Packaging.xml

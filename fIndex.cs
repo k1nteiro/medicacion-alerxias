@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using SpreadsheetLight;
 
 namespace MedicacionAlerxias
 {
@@ -236,6 +238,47 @@ namespace MedicacionAlerxias
             }
 
             // Chegados a este punto, o dsDiario está ordenado tal e como o está o dgvDiario.
+        }
+
+        // Evento Click do botón para imprimir os rexistros.
+        /*
+         * Gardaremos a información dos principais campos do DataGridView nun excel,
+         * ordenada pola data de toma, non de inserción en BD.
+         * 
+         */
+        private void btImprimir_Click(object sender, EventArgs e) 
+        {
+
+            SLDocument sl = new SLDocument(); // Para manexar o documento excel.
+
+            int fila = 1; // variable que controla a fila do excel a escribir.
+
+            // Agregamos unha fila cos nomes das columnas
+            sl.SetCellValue(fila, 1, "Medicación");
+            sl.SetCellValue(fila, 2, "Doses");
+            sl.SetCellValue(fila, 3, "Observacións");
+            sl.SetCellValue(fila, 4, "Data");
+
+            // Ordenamos o DGV por data de toma
+            dgvDiario.Sort(dgvDiario.Columns[4], ListSortDirection.Ascending);
+
+            // Percorremos o DGV xa ordenado e gardamos as 4 principais columnas para cada fila.
+            foreach (DataGridViewRow row in dgvDiario.Rows)
+            {
+                fila++;
+                sl.SetCellValue(fila, 1, row.Cells[2].Value.ToString()); // Nome da Medicación
+                sl.SetCellValue(fila, 2, row.Cells[3].Value.ToString()); // Número de doses
+                sl.SetCellValue(fila, 3, row.Cells[4].Value.ToString()); // Observacións
+                sl.SetCellValue(fila, 4, row.Cells[5].Value.ToString().Split(' ')[0]); // Data sen a hora.
+            }
+
+            
+
+            sl.SaveAs("..\\..\\res\\Descargas\\medicacion_imprimir.xlsx"); // exportamos o documento ás Descargas, dentro dos arquivos do programa.
+
+            MessageBox.Show("O arquivo foi exportado á ruta 'MedicaciónAlerxias/Descargas/medicación_imprimir.xlsx'.", "Descarga Completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
         }
     }
 }
